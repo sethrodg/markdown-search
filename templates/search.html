@@ -23,7 +23,7 @@
     <tr>
         <td class="tag-cloud">Related tags:&nbsp
             {% for t in tag_cloud%}
-                <a href="{{url_for('search')}}?query={{t}}&fields=tags">{{t}}</a>
+                <li><a href="{{url_for('search')}}?query={{t}}&fields=tags">{{t}}</a></li>
             {% endfor %}
         </td>
     </tr>
@@ -32,7 +32,7 @@
     <tr>
         <td class="directories-cloud">File directories:&nbsp
             {% for d in directories %}
-                <a href="{{url_for('search')}}?query={{d|trim}}&fields=filename">{{d|trim}}</a>
+                <li><a href="{{url_for('search')}}?query={{d|trim}}&fields=filename">{{d|trim}}</a></li>
             {% endfor %}
         </td>
     </tr>

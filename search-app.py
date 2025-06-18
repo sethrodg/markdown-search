@@ -1,13 +1,13 @@
+import codecs
+import os
 import threading
 from subprocess import call
 
-import codecs
-import os
-from flask import Flask, request, redirect, url_for, render_template, flash
-
+from flask import Flask, flash, redirect, render_template, request, url_for
 
 # create our little application :)
 from search import Search
+
 
 class UpdateIndexTask(object):
     def __init__(self, rebuild_index=False):
@@ -114,7 +114,7 @@ def store_directories():
         if dirnames:
             for d in dirnames:
                 if os.path.isdir(os.path.join(root, d)):
-                    directories.append("%s\n" % unicode(d.lower(), "utf-8"))
+                    directories.append(f"{d.lower()}\n")
     directories = sorted(set(directories))
     with codecs.open(app.config["INDEX_DIR"] + "/directories.txt", 'w', encoding='utf-8') as f:
         f.writelines(directories)
